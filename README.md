@@ -1,8 +1,8 @@
 # My Personal Project
 
-## Degree Planner Project
+#### Yuhei Arimoto (#36561967)
 
-### Yuhei Arimoto (#36561967)
+## Degree Planner Project
 
 Project Description: <br>
 My project is to design a **degree planner application**. Its main purpose is 
@@ -20,6 +20,12 @@ The target users are **BC students**. And the reason why this project is of inte
 to me is I myself want to plan my degree, and I believe many students can benefit
 from the application by making the degree planning easier. 
 
-- item 1
-- item 2
-- item 3
+## User Stories: 
+  - As a user, I want to be able to add a course to my planner
+  - As a user, I want to be able to view the list of courses on my planner
+  - As a user, I want to be able to make a course as completed, currently
+  taking, or planning
+  - As a user, I want to be able to add a grade to a course
+  - As a user, I want to be able to see a average grade of all the courses I've taken
+  - As a user, I want to be able to be informed of how many more credits and what courses I 
+  still need to take complete to graduate., 
