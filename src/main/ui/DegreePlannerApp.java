@@ -1,17 +1,17 @@
 package ui;
 
-import model.DegreePlanner;
 import model.Course;
+import model.DegreePlanner;
 
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Main {
+public class DegreePlannerApp {
     private static DegreePlanner degreePlanner;
     private static Scanner scanner;
     private static Main main;
 
-    public static void main(String[] args) {
+    public DegreePlannerApp() {
         degreePlanner = new DegreePlanner();
         scanner = new Scanner(System.in);
         main = new Main();
