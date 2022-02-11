@@ -18,10 +18,12 @@ public class DegreePlannerTest {
         testDegreePlanner = new DegreePlanner();
         course1 = new Course("CPSC", 210, 4, 2);
         course2 = new Course("PHYS", 100, 3, 0);
-        course3 = new Course("PHYS", 170, 3, 1);
-        course4 = new Course("DSCI", 100, 3, 1);
+        course3 = new Course("PHYS", 170, 3, 0);
+        course4 = new Course("DSCI", 100, 4, 0);
         course5 = new Course("ECON", 101, 3, 1);
         course2.setGrade(98);
+        course3.setGrade(80);
+        course4.setGrade(91);
     }
 
     @Test
@@ -70,6 +72,18 @@ public class DegreePlannerTest {
 
     @Test
     public void testCalculateAvgGrade() {
+        assertEquals(0, testDegreePlanner.calculateAvgGrade());
 
+        testDegreePlanner.addCourse(course1);
+        assertEquals(0, testDegreePlanner.calculateAvgGrade());
+
+        testDegreePlanner.addCourse(course2);
+        assertEquals(98, testDegreePlanner.calculateAvgGrade());
+
+        testDegreePlanner.addCourse(course4);
+        assertEquals(94, testDegreePlanner.calculateAvgGrade());
+
+        testDegreePlanner.addCourse(course3);
+        assertEquals(89.8, testDegreePlanner.calculateAvgGrade());
     }
 }

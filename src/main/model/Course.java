@@ -4,7 +4,7 @@ package model;
 // status (completed, in progress, or planning), and number of credits
 public class Course {
     private String subjectCode;      // subject code of a course (e.g. CPSC)
-    private int courseCode;       // course code of a course (e.g. 210)
+    private int courseCode;          // course code of a course (e.g. 210)
     private Integer grade;           // percentage grade user got on this course
     private double gpa;              // gpa user got on this course
     private String status;           // status (completed, in progress, or planning)

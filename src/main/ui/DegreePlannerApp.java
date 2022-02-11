@@ -76,7 +76,7 @@ public class DegreePlannerApp {
         }
 
         degreePlanner.addCourse(course);
-        String buffer = scanner.nextLine();
+        String buffer = scanner.nextLine(); // to prevent printing the instruction twice, which idk why it happens
     }
 
     /*
@@ -91,7 +91,7 @@ public class DegreePlannerApp {
         int courseNum = scanner.nextInt();
 
         degreePlanner.deleteCourse(subjectCode, courseNum);
-        String buffer = scanner.nextLine();
+        String buffer = scanner.nextLine(); // to prevent printing the instruction twice, which idk why it happens
     }
 
     /*
@@ -111,7 +111,7 @@ public class DegreePlannerApp {
                 System.out.print("      " + course.getGrade() + "%");
             }
 
-            System.out.println("");
+            System.out.print("\n"); // to change line to print next course
         }
     }
 }

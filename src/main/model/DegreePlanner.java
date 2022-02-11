@@ -52,7 +52,7 @@ public class DegreePlanner {
                 sumCredits += course.getCredit();
             }
         }
-        return Math.round(weightedSumGrades / sumCredits);
+        return Math.round((weightedSumGrades / sumCredits) * 10.0) / 10.0;
     }
 
 
