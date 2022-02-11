@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// Represents a degree planner having courses added by user
+// Represents a degree planner having list of courses added by user
 public class DegreePlanner {
     private List<Course> listOfCourses; // list of courses added to the degree planner
 
@@ -48,12 +48,12 @@ public class DegreePlanner {
     }
 
     /*
-     * EFFECTS: calculate the average grade of all the courses completed
+     * EFFECTS: calculate the average grade of all the courses completed in the list of courses
      */
     public double calculateAvgGrade() {
         double weightedSumGrades = 0;
         double sumCredits = 0;
-        for (Course course: listOfCourses) {
+        for (Course course : listOfCourses) {
             if (course.getStatus() == 0) {
                 weightedSumGrades += course.getGrade() * course.getCredit();
                 sumCredits += course.getCredit();
@@ -68,8 +68,8 @@ public class DegreePlanner {
      */
     public int getCourseIndex(String subjectCode, int courseNum) {
         int index = 0;
-        for (Course course: listOfCourses) {
-            if (course.getSubjectCode().equals(subjectCode)  && course.getCourseCode() == courseNum) {
+        for (Course course : listOfCourses) {
+            if (course.getSubjectCode().equals(subjectCode) && course.getCourseCode() == courseNum) {
                 return index;
             }
             index += 1;

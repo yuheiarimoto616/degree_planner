@@ -44,6 +44,46 @@ class CourseTest {
 
     @Test
     public void testSetGrade() {
+        course2.setGrade(95);
+        assertEquals(95, course2.getGrade());
+        assertEquals("A+", course2.getLetterGrade());
 
+        course2.setGrade(80);
+        assertEquals(80, course2.getGrade());
+        assertEquals("A-", course2.getLetterGrade());
+    }
+
+    @Test
+    public void testPercentageToLetterGrade() {
+        assertEquals("A+", course1.percentageToLetterGrade(91));
+        assertEquals("A+", course1.percentageToLetterGrade(90));
+        assertEquals("A", course1.percentageToLetterGrade(89));
+        assertEquals("A", course1.percentageToLetterGrade(86));
+        assertEquals("A", course1.percentageToLetterGrade(85));
+        assertEquals("A-", course1.percentageToLetterGrade(84));
+        assertEquals("A-", course1.percentageToLetterGrade(81));
+        assertEquals("A-", course1.percentageToLetterGrade(80));
+        assertEquals("B+", course1.percentageToLetterGrade(79));
+        assertEquals("B+", course1.percentageToLetterGrade(77));
+        assertEquals("B+", course1.percentageToLetterGrade(76));
+        assertEquals("B", course1.percentageToLetterGrade(75));
+        assertEquals("B", course1.percentageToLetterGrade(73));
+        assertEquals("B", course1.percentageToLetterGrade(72));
+        assertEquals("B-", course1.percentageToLetterGrade(71));
+        assertEquals("B-", course1.percentageToLetterGrade(69));
+        assertEquals("B-", course1.percentageToLetterGrade(68));
+        assertEquals("C+", course1.percentageToLetterGrade(67));
+        assertEquals("C+", course1.percentageToLetterGrade(65));
+        assertEquals("C+", course1.percentageToLetterGrade(64));
+        assertEquals("C", course1.percentageToLetterGrade(63));
+        assertEquals("C", course1.percentageToLetterGrade(61));
+        assertEquals("C", course1.percentageToLetterGrade(60));
+        assertEquals("C-", course1.percentageToLetterGrade(59));
+        assertEquals("C-", course1.percentageToLetterGrade(56));
+        assertEquals("C-", course1.percentageToLetterGrade(55));
+        assertEquals("D", course1.percentageToLetterGrade(54));
+        assertEquals("D", course1.percentageToLetterGrade(51));
+        assertEquals("D", course1.percentageToLetterGrade(50));
+        assertEquals("F", course1.percentageToLetterGrade(49));
     }
 }

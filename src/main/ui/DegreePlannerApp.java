@@ -58,7 +58,8 @@ public class DegreePlannerApp {
      * MODIFIES: this
      * EFFECTS: print instruction to add a course and
      *          based on user input specified course is added to
-     *          the list of courses in degree planner
+     *          the list of courses in degree planner;
+     *          user can keep adding courses as long as they input "y"
      */
     public void addOperation() {
         boolean keepAdding = true;
@@ -78,8 +79,8 @@ public class DegreePlannerApp {
 
     /*
      * MODIFIES: this
-     * EFFECTS: print instruction to delete a course and
-     *          based on user input specified course is deleted from
+     * EFFECTS: print instruction to add a course and
+     *          based on user input, specified course is added to
      *          the list of courses in degree planner
      */
     private void doAddingCourse() {
@@ -119,9 +120,9 @@ public class DegreePlannerApp {
 
     /*
      * MODIFIES: this
-     * EFFECTS: print instruction to delete a course and
-     *          based on user input specified course is deleted from
-     *          the list of courses in degree planner
+     * EFFECTS: print instruction to change status of a course and
+     *          based on user input, course's status is changed to status specified by user;
+     *          if the status is changed to Completed, user is prompted to add grade for the course.
      */
     public void statusOperation() {
         int courseIndex = getCourse();
@@ -143,8 +144,8 @@ public class DegreePlannerApp {
 
     /*
      * MODIFIES: this
-     * EFFECTS: print instruction to get information of course to return
-     *          index of the specified course in DegreePlanner.
+     * EFFECTS: print instruction to get information of course in order to return
+     *          index of the specified course in list of courses in DegreePlanner.
      */
     public int getCourse() {
         System.out.println("\nProvide the course's subject code:");
@@ -161,15 +162,20 @@ public class DegreePlannerApp {
      *          (if not completed NA), and its status
      */
     public void printCourses() {
-        System.out.println("     Course    Credits     Status         Grade");
-        for (Course course: degreePlanner.getListOfCourses()) {
-            System.out.print("     " + course.getSubjectCode() + course.getCourseCode() + "    " + course.getCredit());
-            System.out.print("    " + course.getStatusInString());
+        System.out.println("     Course      Credits      Status      Grade(%)      Letter Grade");
+        for (Course course : degreePlanner.getListOfCourses()) {
+            System.out.print("    " + course.getSubjectCode() + " " + course.getCourseCode() + "       ");
+            System.out.print(course.getCredit());
 
-            if (course.getGrade() == null) {
-                System.out.print("      NA");
-            } else {
-                System.out.print("      " + course.getGrade() + "%");
+            if (course.getStatus() == 0) {
+                System.out.print("       " + course.getStatusInString() + "       ");
+                System.out.print(course.getGrade() + "              " + course.getLetterGrade());
+            } else if (course.getStatus() == 1) {
+                System.out.print("       " + course.getStatusInString() + "     ");
+                System.out.print("NA              NA");
+            } else if (course.getStatus() == 2) {
+                System.out.print("       " + course.getStatusInString() + "        ");
+                System.out.print("NA              NA");
             }
 
             System.out.print("\n"); // to change line to print next course

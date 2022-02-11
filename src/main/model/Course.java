@@ -1,12 +1,12 @@
 package model;
 
-// Represents a course having subject code, class code, grade user got,
+// Represents a course having subject code, class code, percentage and letter grade user got,
 // status (0 for completed, 1 for in progress, or 2 for planning), and number of credits
 public class Course {
     private String subjectCode;      // subject code of a course (e.g. CPSC)
     private int courseCode;          // course code of a course (e.g. 210)
-    private Integer grade;           // percentage grade user got on this course
-    private double gpa;              // gpa user got on this course
+    private Integer grade;           // percentage grade user got on this course (must be in range [0, 100])
+    private String letterGrade;      // letter grade user got on this course
     private int status;              // status (0 for completed, 1 for in progress, or 2 for planning)
     private int credits;             // number of credits the course worth
 
@@ -42,11 +42,43 @@ public class Course {
     }
 
     /*
+     * REQUIRES: grade must be in range [0, 100]
      * MODIFIES: this
-     * EFFECTS: set course's grade and gpa based on the grade TODO
+     * EFFECTS: set course's grade and percentage grade
      */
     public void setGrade(Integer grade) {
         this.grade = grade;
+        this.letterGrade = percentageToLetterGrade(grade);
+    }
+
+    /*
+     * REQUIRES: grade must be in range [0, 100]
+     * EFFECTS: return course's letter grade based on the percentage grade
+     */
+    public String percentageToLetterGrade(Integer grade) {
+        if (90 <= grade) {
+            return "A+";
+        } else if (85 <= grade) {
+            return "A";
+        } else if (80 <= grade) {
+            return "A-";
+        } else if (76 <= grade) {
+            return "B+";
+        } else if (72 <= grade) {
+            return "B";
+        } else if (68 <= grade) {
+            return "B-";
+        } else if (64 <= grade) {
+            return "C+";
+        } else if (60 <= grade) {
+            return "C";
+        } else if (55 <= grade) {
+            return "C-";
+        } else if (50 <= grade) {
+            return "D";
+        } else {
+            return "F";
+        }
     }
 
     /*
@@ -60,6 +92,10 @@ public class Course {
     // getters
     public Integer getGrade() {
         return grade;
+    }
+
+    public String getLetterGrade() {
+        return letterGrade;
     }
 
     public String getSubjectCode() {
