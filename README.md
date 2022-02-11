@@ -22,10 +22,11 @@ from the application by making the degree planning easier.
 
 ## User Stories: 
   - As a user, I want to be able to add a course to my planner
+  - As a user, I want to be able to delete a course from my planner
   - As a user, I want to be able to view the list of courses on my planner
-  - As a user, I want to be able to make a course as completed, currently
+  - As a user, I want to be able to mark a course as completed, currently
   taking, or planning
-  - As a user, I want to be able to add a grade to a course
-  - As a user, I want to be able to see a average grade of all the courses I've taken
+  - As a user, I want to be able to add grade to a course when completed
+  - As a user, I want to be able to see a average grade of all the courses I've completed
   - As a user, I want to be able to be informed of how many more credits and what courses I 
   still need to take complete to graduate., 

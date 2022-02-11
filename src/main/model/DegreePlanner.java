@@ -3,63 +3,61 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents a degree planner having courses added by user
 public class DegreePlanner {
-    private List<Course> listOfCourses;
-    private int weightedGPA;
-    private int numCredits;
+    private List<Course> listOfCourses; // list of courses added to the degree planner
 
+    /*
+     * EFFECTS: empty ArrayList for courses is set
+     */
     public DegreePlanner() {
         this.listOfCourses = new ArrayList<>();
     }
 
-    // MODIFIES: this
-    // EFFECTS: add specified course to the listOfCourses
+    /*
+     * REQUIRES: course should not be already in the listOfCourses
+     * MODIFIES: this
+     * EFFECTS: add specified course to the listOfCourses
+     */
     public void addCourse(Course course) {
         listOfCourses.add(course);
     }
 
-    // REQUIRES: course must be in the listOfCourses
-    // MODIFIES: this
-    // EFFECTS: remove course from the listOfCourses
-    public void deleteCourse(Course course) {
+    /*
+     * REQUIRES: course must be in the listOfCourses
+     * MODIFIES: this
+     * EFFECTS: remove course from the listOfCourses
+     */
+    public void deleteCourse(String subjectCode, int courseNum) {
         int index = 0;
-        for (Course courseInList: listOfCourses) {
-            if (courseInList == course) {
-                listOfCourses.remove(index);
+        int courseIndex = 0;
+        for (Course course: listOfCourses) {
+            if (course.getSubjectCode().equals(subjectCode)  && course.getCourseCode() == courseNum) {
+                courseIndex = index;
             }
             index += 1;
         }
+        listOfCourses.remove(courseIndex);
     }
 
-    // EFFECTS: calculate the average grade of all the courses completed
+    /*
+     * EFFECTS: calculate the average grade of all the courses completed
+     */
     public double calculateAvgGrade() {
         double weightedSumGrades = 0;
         double sumCredits = 0;
         for (Course course: listOfCourses) {
-            if (course.getStatus() == "passed") {
+            if (course.getStatus().equals("Completed")) {
                 weightedSumGrades += course.getGrade() * course.getCredit();
                 sumCredits += course.getCredit();
             }
         }
-        return weightedSumGrades / sumCredits;
-    }
-
-    // EFFECTS: print out all the courses in list of courses in bullet point
-    public void printCourses() {
-        System.out.println("Courses:");
-        for (Course course: listOfCourses) {
-            System.out.println("  • " + course.getSubjectCode() + course.getClassCode() + "    " + course.getCredit());
-        }
-        System.out.println(" ");
+        return Math.round(weightedSumGrades / sumCredits);
     }
 
 
     // getters
     public List<Course> getListOfCourses() {
         return listOfCourses;
-    }
-
-    public double getWeightedGPA() {
-        return weightedGPA;
     }
 }
