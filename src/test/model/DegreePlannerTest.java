@@ -73,7 +73,34 @@ public class DegreePlannerTest {
 
     @Test
     public void testChangeStatus() {
+        testDegreePlanner.addCourse(course1);
+        testDegreePlanner.addCourse(course2);
+        testDegreePlanner.addCourse(course3);
+        testDegreePlanner.addCourse(course4);
+        testDegreePlanner.addCourse(course5);
 
+        testDegreePlanner.changeStatus(0, 1);
+        assertEquals(1, course1.getStatus());
+        testDegreePlanner.changeStatus(0, 2);
+        assertEquals(2, course1.getStatus());
+        testDegreePlanner.changeStatus(3, 1);
+        assertEquals(1, course4.getStatus());
+        testDegreePlanner.changeStatus(3, 0);
+        assertEquals(0, course4.getStatus());
+    }
+
+    @Test
+    public void testChangeGrade() {
+        testDegreePlanner.addCourse(course1);
+        testDegreePlanner.addCourse(course2);
+        testDegreePlanner.addCourse(course3);
+        testDegreePlanner.addCourse(course4);
+        testDegreePlanner.addCourse(course5);
+
+        testDegreePlanner.changeGrade(1, 50);
+        assertEquals(50, course2.getGrade());
+        testDegreePlanner.changeGrade(3, 100);
+        assertEquals(100, course4.getGrade());
     }
 
     @Test
@@ -89,6 +116,7 @@ public class DegreePlannerTest {
         assertEquals(1, testDegreePlanner.getCourseIndex(course2.getSubjectCode(), course2.getCourseCode()));
         assertEquals(2, testDegreePlanner.getCourseIndex(course3.getSubjectCode(), course3.getCourseCode()));
         assertEquals(4, testDegreePlanner.getCourseIndex(course5.getSubjectCode(), course5.getCourseCode()));
+        assertEquals(5, testDegreePlanner.getCourseIndex("WRDS", 100));
     }
 
     @Test
