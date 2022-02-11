@@ -22,17 +22,24 @@ class CourseTest {
         assertEquals("CPSC", course1.getSubjectCode());
         assertEquals(210, course1.getCourseCode());
         assertEquals(4, course1.getCredit());
-        assertEquals("Planning", course1.getStatus());
+        assertEquals(2, course1.getStatus());
 
         assertEquals("PHYS", course2.getSubjectCode());
         assertEquals(100, course2.getCourseCode());
         assertEquals(3, course2.getCredit());
-        assertEquals("Completed", course2.getStatus());
+        assertEquals(0, course2.getStatus());
 
         assertEquals("DSCI", course3.getSubjectCode());
         assertEquals(100, course3.getCourseCode());
         assertEquals(3, course3.getCredit());
-        assertEquals("In progress", course3.getStatus());
+        assertEquals(1, course3.getStatus());
+    }
+
+    @Test
+    public void testGetStatusInString() {
+        assertEquals("Planning", course1.getStatusInString());
+        assertEquals("Completed", course2.getStatusInString());
+        assertEquals("In progress", course3.getStatusInString());
     }
 
     @Test

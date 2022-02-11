@@ -51,23 +51,44 @@ public class DegreePlannerTest {
         testDegreePlanner.addCourse(course4);
         testDegreePlanner.addCourse(course5);
 
-        testDegreePlanner.deleteCourse(course4.getSubjectCode(), course4.getCourseCode());
+
+        testDegreePlanner.deleteCourse(3);
         assertEquals(4, testDegreePlanner.getListOfCourses().size());
         assertEquals(course1, testDegreePlanner.getListOfCourses().get(0));
         assertEquals(course2, testDegreePlanner.getListOfCourses().get(1));
         assertEquals(course3, testDegreePlanner.getListOfCourses().get(2));
         assertEquals(course5, testDegreePlanner.getListOfCourses().get(3));
 
-        testDegreePlanner.deleteCourse(course3.getSubjectCode(), course3.getCourseCode());
+        testDegreePlanner.deleteCourse(2);
         assertEquals(3, testDegreePlanner.getListOfCourses().size());
         assertEquals(course1, testDegreePlanner.getListOfCourses().get(0));
         assertEquals(course2, testDegreePlanner.getListOfCourses().get(1));
         assertEquals(course5, testDegreePlanner.getListOfCourses().get(2));
 
-        testDegreePlanner.deleteCourse(course1.getSubjectCode(), course1.getCourseCode());
+        testDegreePlanner.deleteCourse(0);
         assertEquals(2, testDegreePlanner.getListOfCourses().size());
         assertEquals(course2, testDegreePlanner.getListOfCourses().get(0));
         assertEquals(course5, testDegreePlanner.getListOfCourses().get(1));
+    }
+
+    @Test
+    public void testChangeStatus() {
+
+    }
+
+    @Test
+    public void testGetCourseIndex() {
+        testDegreePlanner.addCourse(course1);
+        testDegreePlanner.addCourse(course2);
+        testDegreePlanner.addCourse(course3);
+        testDegreePlanner.addCourse(course4);
+        testDegreePlanner.addCourse(course5);
+
+        assertEquals(3, testDegreePlanner.getCourseIndex(course4.getSubjectCode(), course4.getCourseCode()));
+        assertEquals(0, testDegreePlanner.getCourseIndex(course1.getSubjectCode(), course1.getCourseCode()));
+        assertEquals(1, testDegreePlanner.getCourseIndex(course2.getSubjectCode(), course2.getCourseCode()));
+        assertEquals(2, testDegreePlanner.getCourseIndex(course3.getSubjectCode(), course3.getCourseCode()));
+        assertEquals(4, testDegreePlanner.getCourseIndex(course5.getSubjectCode(), course5.getCourseCode()));
     }
 
     @Test

@@ -24,20 +24,27 @@ public class DegreePlanner {
     }
 
     /*
-     * REQUIRES: course must be in the listOfCourses
      * MODIFIES: this
-     * EFFECTS: remove course from the listOfCourses
+     * EFFECTS: remove course at the index from the listOfCourses
      */
-    public void deleteCourse(String subjectCode, int courseNum) {
-        int index = 0;
-        int courseIndex = 0;
-        for (Course course: listOfCourses) {
-            if (course.getSubjectCode().equals(subjectCode)  && course.getCourseCode() == courseNum) {
-                courseIndex = index;
-            }
-            index += 1;
-        }
-        listOfCourses.remove(courseIndex);
+    public void deleteCourse(int index) {
+        listOfCourses.remove(index);
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: change the status of a course specified by index to given status
+     */
+    public void changeStatus(int index, int status) {
+        listOfCourses.get(index).setStatus(status);
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: change the grade of a course specified by index to given grade
+     */
+    public void changeGrade(int index, int grade) {
+        listOfCourses.get(index).setGrade(grade);
     }
 
     /*
@@ -47,7 +54,7 @@ public class DegreePlanner {
         double weightedSumGrades = 0;
         double sumCredits = 0;
         for (Course course: listOfCourses) {
-            if (course.getStatus().equals("Completed")) {
+            if (course.getStatus() == 0) {
                 weightedSumGrades += course.getGrade() * course.getCredit();
                 sumCredits += course.getCredit();
             }
@@ -55,6 +62,20 @@ public class DegreePlanner {
         return Math.round((weightedSumGrades / sumCredits) * 10.0) / 10.0;
     }
 
+    /*
+     * REQUIRES: course must already be in the listOfCourses
+     * EFFECTS: get location (index) of course in the listOfCourses based on subjectCode and courseNum
+     */
+    public int getCourseIndex(String subjectCode, int courseNum) {
+        int index = 0;
+        for (Course course: listOfCourses) {
+            if (course.getSubjectCode().equals(subjectCode)  && course.getCourseCode() == courseNum) {
+                return index;
+            }
+            index += 1;
+        }
+        return index;
+    }
 
     // getters
     public List<Course> getListOfCourses() {

@@ -28,6 +28,8 @@ public class DegreePlannerApp {
                 addOperation();
             } else if (action.equals("delete")) {
                 deleteOperation();
+            } else if (action.equals("status")) {
+                statusOperation();
             } else if (action.equals("view")) {
                 printCourses();
             } else if (action.equals("grade")) {
@@ -38,7 +40,7 @@ public class DegreePlannerApp {
         }
     }
 
-    // EFFECTS: print out the instruction
+    // EFFECTS: print out the instruction for user
     public void printInstruction() {
         System.out.println("\nPlease select an option:");
         System.out.println("    • Edit degree planner");
@@ -110,12 +112,47 @@ public class DegreePlannerApp {
      *          the list of courses in degree planner
      */
     public void deleteOperation() {
+        int courseIndex = getCourse();
+
+        degreePlanner.deleteCourse(courseIndex);
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: print instruction to delete a course and
+     *          based on user input specified course is deleted from
+     *          the list of courses in degree planner
+     */
+    public void statusOperation() {
+        int courseIndex = getCourse();
+
+        System.out.println("\nChange status to ...");
+        System.out.println("     - 0 -> Completed");
+        System.out.println("     - 1 -> In progress");
+        System.out.println("     - 2 -> Planning");
+        int status = input.nextInt();
+
+        degreePlanner.changeStatus(courseIndex, status);
+
+        if (status == 0) {
+            System.out.println("\nGrade (%):");
+            int grade = input.nextInt();
+            degreePlanner.changeGrade(courseIndex, grade);
+        }
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: print instruction to get information of course to return
+     *          index of the specified course in DegreePlanner.
+     */
+    public int getCourse() {
         System.out.println("\nProvide the course's subject code:");
         String subjectCode = input.next().toUpperCase(Locale.ROOT);
         System.out.println("\nProvide the course's course number:");
         int courseNum = input.nextInt();
 
-        degreePlanner.deleteCourse(subjectCode, courseNum);
+        return degreePlanner.getCourseIndex(subjectCode, courseNum);
     }
 
     /*
@@ -127,7 +164,7 @@ public class DegreePlannerApp {
         System.out.println("     Course    Credits     Status         Grade");
         for (Course course: degreePlanner.getListOfCourses()) {
             System.out.print("     " + course.getSubjectCode() + course.getCourseCode() + "    " + course.getCredit());
-            System.out.print("    " + course.getStatus());
+            System.out.print("    " + course.getStatusInString());
 
             if (course.getGrade() == null) {
                 System.out.print("      NA");
