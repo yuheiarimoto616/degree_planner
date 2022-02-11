@@ -9,18 +9,20 @@ import java.util.Scanner;
 // Degree planner application
 public class DegreePlannerApp {
     private static DegreePlanner degreePlanner;
-    private static Scanner scanner;
+    private static Scanner input;
 
+    // EFFECTS: runs the degree planner application
     public DegreePlannerApp() {
         degreePlanner = new DegreePlanner();
-        scanner = new Scanner(System.in);
+        input = new Scanner(System.in);
+        input.useDelimiter("\n");
 
         boolean isQuit = false;
 
         while (!isQuit) {
             printInstruction();
 
-            String action = scanner.nextLine();
+            String action = input.next().toLowerCase(Locale.ROOT);
 
             if (action.equals("add")) {
                 addOperation();
@@ -51,47 +53,69 @@ public class DegreePlannerApp {
     }
 
     /*
+     * MODIFIES: this
      * EFFECTS: print instruction to add a course and
      *          based on user input specified course is added to
      *          the list of courses in degree planner
      */
     public void addOperation() {
+        boolean keepAdding = true;
+
+        while (keepAdding) {
+            doAddingCourse();
+
+            System.out.println("\ny -> to keep adding");
+            System.out.println("n -> to stop adding");
+            String command = input.next().toLowerCase(Locale.ROOT);
+
+            if (command.equals("n")) {
+                keepAdding = false;
+            }
+        }
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: print instruction to delete a course and
+     *          based on user input specified course is deleted from
+     *          the list of courses in degree planner
+     */
+    private void doAddingCourse() {
         System.out.println("\nSubject code (e.g. CPSC):");
-        String subjectCode = scanner.nextLine().toUpperCase(Locale.ROOT);
+        String subjectCode = input.next().toUpperCase(Locale.ROOT);
 
         System.out.println("\nCourse number (e.g. 210):");
-        int courseNum = scanner.nextInt();
+        int courseNum = input.nextInt();
 
         System.out.println("\nNumber of credits:");
-        int credits = scanner.nextInt();
+        int credits = input.nextInt();
 
         System.out.println("\nStatus (choose 0 for completed, 1 for currently taking, and 2 for planning):");
-        int status = scanner.nextInt();
+        int status = input.nextInt();
 
         Course course = new Course(subjectCode, courseNum, credits, status);
 
         if (status == 0) {
             System.out.println("\nGrade (%):");
-            course.setGrade(scanner.nextInt());
+            course.setGrade(input.nextInt());
         }
 
         degreePlanner.addCourse(course);
-        String buffer = scanner.nextLine(); // to prevent printing the instruction twice, which idk why it happens
     }
 
     /*
+     * MODIFIES: this
      * EFFECTS: print instruction to delete a course and
      *          based on user input specified course is deleted from
      *          the list of courses in degree planner
      */
     public void deleteOperation() {
         System.out.println("\nProvide the course's subject code:");
-        String subjectCode = scanner.nextLine().toUpperCase(Locale.ROOT);
+        String subjectCode = input.next().toUpperCase(Locale.ROOT);
         System.out.println("\nProvide the course's course number:");
-        int courseNum = scanner.nextInt();
+        int courseNum = input.nextInt();
 
         degreePlanner.deleteCourse(subjectCode, courseNum);
-        String buffer = scanner.nextLine(); // to prevent printing the instruction twice, which idk why it happens
     }
 
     /*
