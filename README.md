@@ -23,3 +23,5 @@ to my planner with grades, its status, and number of credits.
   taking, or planning
   - As a user, I want to be able to add grade to a course when completed
   - As a user, I want to be able to see the average grade of all the courses I've completed
+
+*source: TellerApp (learned how to use scanner)
