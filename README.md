@@ -22,6 +22,9 @@ to my planner with grades, its status, and number of credits.
   - As a user, I want to be able to mark a course as completed, currently
   taking, or planning
   - As a user, I want to be able to add grade to a course when completed
-  - As a user, I want to be able to see the average grade of all the courses I've completed
+  - As a user, I want to be able to see the average grade of all the courses I've completed<br> <br>
+  - As a user, when I select to quit, I want to be able to save my degree planner to file.
+  - As a user, when I start the application, I want to be able to load 
+my saved degree planner from file.
 
 *source: TellerApp (learned how to use scanner)
