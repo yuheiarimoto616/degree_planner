@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a degree planner having list of courses added by user
-public class DegreePlanner {
+public class DegreePlanner implements Writable {
     private List<Course> listOfCourses; // list of courses added to the degree planner
 
     /*
@@ -80,5 +84,22 @@ public class DegreePlanner {
     // getters
     public List<Course> getListOfCourses() {
         return listOfCourses;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("courses", coursesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns courses in this degree planner as a JSON array
+    public JSONArray coursesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Course c : listOfCourses) {
+            jsonArray.put(c.toJson());
+        }
+        return jsonArray;
     }
 }

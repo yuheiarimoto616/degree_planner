@@ -1,12 +1,14 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a course having subject code, class code, percentage and letter grade user got,
 // status (0 for completed, 1 for in progress, or 2 for planning), and number of credits
-public class Course {
+public class Course implements Writable {
     private String subjectCode;      // subject code of a course (e.g. CPSC)
     private int courseCode;          // course code of a course (e.g. 210)
-    private Integer grade;           // percentage grade user got on this course (must be in range [0, 100])
-    private String letterGrade;      // letter grade user got on this course
+    private int grade;               // percentage grade user got on this course (in range [0, 100] or -1 for null)
     private int status;              // status (0 for completed, 1 for in progress, or 2 for planning)
     private int credits;             // number of credits the course worth
 
@@ -23,6 +25,7 @@ public class Course {
         this.courseCode = courseCode;
         this.credits = numCredits;
         this.status = status;
+        this.grade = -1;
     }
 
     /*
@@ -46,16 +49,15 @@ public class Course {
      * MODIFIES: this
      * EFFECTS: set course's grade and percentage grade
      */
-    public void setGrade(Integer grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
-        this.letterGrade = percentageToLetterGrade(grade);
     }
 
     /*
      * REQUIRES: grade must be in range [0, 100]
      * EFFECTS: return course's letter grade based on the percentage grade
      */
-    public String percentageToLetterGrade(Integer grade) {
+    public String percentageToLetterGrade(int grade) {
         if (90 <= grade) {
             return "A+";
         } else if (85 <= grade) {
@@ -95,7 +97,7 @@ public class Course {
     }
 
     public String getLetterGrade() {
-        return letterGrade;
+        return percentageToLetterGrade(grade);
     }
 
     public String getSubjectCode() {
@@ -112,5 +114,16 @@ public class Course {
 
     public double getCredit() {
         return credits;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("subjectCode", subjectCode);
+        json.put("courseCode", courseCode);
+        json.put("grade", grade);
+        json.put("status", status);
+        json.put("credits", credits);
+        return json;
     }
 }

@@ -1,0 +1,16 @@
+{"courses": [
+    {
+        "credits": 4,
+        "courseCode": 210,
+        "grade": -1,
+        "subjectCode": "CPSC",
+        "status": 1
+    },
+    {
+        "credits": 4,
+        "courseCode": 110,
+        "grade": 97,
+        "subjectCode": "CPSC",
+        "status": 0
+    }
+]}

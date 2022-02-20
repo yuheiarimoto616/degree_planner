@@ -2,22 +2,38 @@ package ui;
 
 import model.Course;
 import model.DegreePlanner;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
 // Degree planner application
 public class DegreePlannerApp {
+    private static final String JSON_STORE = "./data/degreeplanner.json";
     private static DegreePlanner degreePlanner;
     private static Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the degree planner application
-    public DegreePlannerApp() {
+    public DegreePlannerApp() throws FileNotFoundException {
         degreePlanner = new DegreePlanner();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
 
+        runDegreePlanner();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: process user inputs
+    private void runDegreePlanner() {
         boolean isQuit = false;
+        input = new Scanner(System.in);
 
         while (!isQuit) {
             printInstruction();
@@ -34,6 +50,10 @@ public class DegreePlannerApp {
                 printCourses();
             } else if (action.equals("grade")) {
                 System.out.println("\n" + degreePlanner.calculateAvgGrade() + "%");
+            } else if (action.equals("s")) {
+                saveDegreePlanner();
+            } else if (action.equals("l")) {
+                loadDegreePlanner();
             } else if (action.equals("q")) {
                 isQuit = true;
             }
@@ -51,6 +71,8 @@ public class DegreePlannerApp {
         System.out.println("          - view (to view your courses)");
         System.out.println("          - grade (to get average grade)");
         System.out.println("          - GPA");
+        System.out.println("    ✻ s (to save degree planner)");
+        System.out.println("    ✻ l (to load saved degree planner)");
         System.out.println("    ✻ q (to quit)");
     }
 
@@ -179,6 +201,29 @@ public class DegreePlannerApp {
             }
 
             System.out.print("\n"); // to change line to print next course
+        }
+    }
+
+    // EFFECTS: saves the degree planner to file
+    public void saveDegreePlanner() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(degreePlanner);
+            jsonWriter.close();
+            System.out.println("Saved Degree Planner to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    public void loadDegreePlanner() {
+        try {
+            degreePlanner = jsonReader.read();
+            System.out.println("Loaded Degree Planner from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }
