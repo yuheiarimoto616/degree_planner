@@ -70,7 +70,6 @@ public class DegreePlannerApp {
         System.out.println("    • View degree planner");
         System.out.println("          - view (to view your courses)");
         System.out.println("          - grade (to get average grade)");
-        System.out.println("          - GPA");
         System.out.println("    ✻ s (to save degree planner)");
         System.out.println("    ✻ l (to load saved degree planner)");
         System.out.println("    ✻ q (to quit)");
@@ -204,7 +203,8 @@ public class DegreePlannerApp {
         }
     }
 
-    // EFFECTS: saves the degree planner to file
+    // EFFECTS: if FileNotFoundException is caught, print a message;
+    //          otherwise, saves the degree planner to file
     public void saveDegreePlanner() {
         try {
             jsonWriter.open();
@@ -217,7 +217,7 @@ public class DegreePlannerApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads workroom from file; if IOException is caught, print a message.
     public void loadDegreePlanner() {
         try {
             degreePlanner = jsonReader.read();

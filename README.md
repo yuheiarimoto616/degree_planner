@@ -27,4 +27,4 @@ to my planner with grades, its status, and number of credits.
   - As a user, when I start the application, I want to be able to load 
 my saved degree planner from file.
 
-*source: TellerApp (learned how to use scanner)
+*source: TellerApp (learned how to use scanner) & JsonSerializationDemo

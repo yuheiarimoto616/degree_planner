@@ -86,6 +86,7 @@ public class DegreePlanner implements Writable {
         return listOfCourses;
     }
 
+    // EFFECTS: convert DegreePlanner to JSONObject and return it
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

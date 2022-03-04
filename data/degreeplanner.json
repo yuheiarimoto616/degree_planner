@@ -1,16 +1,44 @@
 {"courses": [
     {
+        "credits": 3,
+        "courseCode": 150,
+        "grade": -1,
+        "subjectCode": "WRDS",
+        "status": 2
+    },
+    {
+        "credits": 3,
+        "courseCode": 100,
+        "grade": -1,
+        "subjectCode": "LING",
+        "status": 2
+    },
+    {
         "credits": 4,
-        "courseCode": 210,
+        "courseCode": 221,
         "grade": -1,
         "subjectCode": "CPSC",
-        "status": 1
+        "status": 2
+    },
+    {
+        "credits": 3,
+        "courseCode": 200,
+        "grade": -1,
+        "subjectCode": "MATH",
+        "status": 2
     },
     {
         "credits": 4,
         "courseCode": 110,
         "grade": 97,
         "subjectCode": "CPSC",
+        "status": 0
+    },
+    {
+        "credits": 3,
+        "courseCode": 100,
+        "grade": 98,
+        "subjectCode": "PHYS",
         "status": 0
     }
 ]}
