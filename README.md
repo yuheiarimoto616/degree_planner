@@ -23,8 +23,13 @@ to my planner with grades, its status, and number of credits.
   taking, or planning
   - As a user, I want to be able to add grade to a course when completed
   - As a user, I want to be able to see the average grade of all the courses I've completed<br> <br>
-  - As a user, when I select to quit, I want to be able to save my degree planner to file.
-  - As a user, when I start the application, I want to be able to load 
+  - As a user, when I select to save, I want to be able to save my degree planner to file.
+  - As a user, when I select to load, I want to be able to load 
 my saved degree planner from file.
 
 *source: TellerApp (learned how to use scanner) & JsonSerializationDemo
+
+Citations:
+UBC Logo: https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets/
+https://www.freelogovectors.net/ubc-logo-university-of-british-columbia/
+Java Swing Tutorial: https://www.youtube.com/watch?v=Kmgo00avvEw
