@@ -36,5 +36,9 @@ Java Swing Tutorial: https://www.youtube.com/watch?v=Kmgo00avvEw <br>
 Source for SplashWindow: <br>
 https://www.infoworld.com/article/2077467/java-tip-104--make-a-splash-with-swing.html <br>
 https://www.roseindia.net/tutorial/java/swing/splashScreen.html <br>
-Source for JTable: <br>
-https://www.youtube.com/watch?v=iMBfneE2Ztg
+Sources for JTable (tutorial on JTable): <br>
+https://www.youtube.com/watch?v=iMBfneE2Ztg <br>
+https://www.youtube.com/watch?v=22MBsRYuM4Q <br>
+https://1bestcsharp.blogspot.com/2015/05/java-jtable-add-delete-update-row.html <br>
+https://stackoverflow.com/questions/3549206/how-to-add-row-in-jtable <br>
+https://docs.oracle.com/javase/tutorial/uiswing/components/table.html#data

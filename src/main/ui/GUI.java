@@ -20,10 +20,10 @@ public class GUI extends MouseAdapter {
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
     private DegreePlanner degreePlanner;
+
     private JFrame frame;
     private DefaultTableModel model;
     private JTable courseTable;
-    private JPanel panel;
     private JButton loadButton;
     private JButton saveButton;
     private JButton addButton;
@@ -36,12 +36,41 @@ public class GUI extends MouseAdapter {
     private JTextField statusField;
     private JTextField creditsField;
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public GUI() {
         degreePlanner = new DegreePlanner();
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
 
+        frame = new JFrame();
+        frame.setSize(800, 800);
+
+        setUpTable();
+
+        JScrollPane scrollPane = new JScrollPane(courseTable);
+        scrollPane.setBounds(0, 90, frame.getWidth(), 300);
+        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(151, 212, 233), 4));
+
+        setUpTextFields();
+        setUpButtons();
+        setUpInstructions();
+
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.white);
+        frame.add(new HeaderPanel(frame));
+        frame.add(scrollPane);
+        frame.setTitle("Degree Planner");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        setFrameLocation(frame);
+
+        new LoadingScreen(frame);
+    }
+
+    public static void main(String[] args) {
+        new GUI();
+    }
+
+    public void setUpTable() {
         model = new DefaultTableModel();
         model.addColumn("Course");
         model.addColumn("Credits");
@@ -54,34 +83,6 @@ public class GUI extends MouseAdapter {
         courseTable.setFillsViewportHeight(true);
         courseTable.setFont(new Font("Whitney", Font.PLAIN, 12));
         courseTable.addMouseListener(this);
-
-        frame = new JFrame();
-        frame.setSize(800, 800);
-
-        JScrollPane scrollPane = new JScrollPane(courseTable);
-        scrollPane.setBounds(0, 90, frame.getWidth(), 300);
-        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(151, 212, 233), 4));
-
-        panel = new HeaderPanel(frame);
-
-        setUpTextFields();
-        setUpButtons();
-        setUpInstructions();
-
-        frame.setLayout(null);
-        frame.getContentPane().setBackground(Color.white);
-        frame.add(panel);
-        frame.add(scrollPane);
-        frame.setTitle("Degree Planner");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        setFrameLocation(frame);
-
-        new LoadingScreen(frame);
-    }
-
-    public static void main(String[] args) {
-        new GUI();
     }
 
     // MODIFIES: this
