@@ -33,6 +33,8 @@ Citations:
 UBC Logo: https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets/ <br>
 https://www.freelogovectors.net/ubc-logo-university-of-british-columbia/ <br>
 Java Swing Tutorial: https://www.youtube.com/watch?v=Kmgo00avvEw <br>
-Source for SplashWindow:
+Source for SplashWindow: <br>
 https://www.infoworld.com/article/2077467/java-tip-104--make-a-splash-with-swing.html <br>
-https://www.roseindia.net/tutorial/java/swing/splashScreen.html
+https://www.roseindia.net/tutorial/java/swing/splashScreen.html <br>
+Source for JTable: <br>
+https://www.youtube.com/watch?v=iMBfneE2Ztg

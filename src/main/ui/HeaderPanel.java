@@ -22,7 +22,7 @@ public class HeaderPanel extends JPanel {
 
     public void setBorderLine() {
         JPanel borderLine = new JPanel();
-        borderLine.setBounds(0, panelSize.height - 5, frameSize.width, 5);
+        borderLine.setBounds(0, panelSize.height - 7, frameSize.width, 7);
         borderLine.setBackground(new Color(12, 35, 68));
         borderLine.setLayout(null);
         this.add(borderLine);

@@ -91,6 +91,24 @@ public class Course implements Writable {
         this.status = status;
     }
 
+    // MODIFIES: this
+    // EFFECTS: set subjectCode to the given code
+    public void setSubjectCode(String subjectCode) {
+        this.subjectCode = subjectCode;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: set courseCode to the given code
+    public void setCourseCode(int courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: set credits number to the given number
+    public void setCreditsNum(int credits) {
+        this.credits = credits;
+    }
+
     // getters
     public Integer getGrade() {
         return grade;
