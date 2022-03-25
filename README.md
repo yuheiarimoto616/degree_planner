@@ -30,6 +30,9 @@ my saved degree planner from file.
 *source: TellerApp (learned how to use scanner) & JsonSerializationDemo
 
 Citations:
-UBC Logo: https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets/
-https://www.freelogovectors.net/ubc-logo-university-of-british-columbia/
-Java Swing Tutorial: https://www.youtube.com/watch?v=Kmgo00avvEw
+UBC Logo: https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets/ <br>
+https://www.freelogovectors.net/ubc-logo-university-of-british-columbia/ <br>
+Java Swing Tutorial: https://www.youtube.com/watch?v=Kmgo00avvEw <br>
+Source for SplashWindow:
+https://www.infoworld.com/article/2077467/java-tip-104--make-a-splash-with-swing.html <br>
+https://www.roseindia.net/tutorial/java/swing/splashScreen.html
