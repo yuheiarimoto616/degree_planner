@@ -30,14 +30,19 @@ my saved degree planner from file.
 *source: TellerApp (learned how to use scanner) & JsonSerializationDemo
 
 Citations: <br>
-UBC Logo: https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets/ <br>
+UBC Logo: <br>
+https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets/ <br>
 https://www.freelogovectors.net/ubc-logo-university-of-british-columbia/ <br>
+https://brand.ubc.ca/guidelines/downloads/ubc-colour-and-fonts/ <br>
+
 Java Swing Tutorial (including JLabel, JButton, JTextField): <br>
 https://www.youtube.com/watch?v=Kmgo00avvEw <br>
 https://web.mit.edu/6.005/www/sp14/psets/ps4/java-6-tutorial/components.html <br>
+
 Source for SplashWindow: <br>
 https://www.infoworld.com/article/2077467/java-tip-104--make-a-splash-with-swing.html <br>
 https://www.roseindia.net/tutorial/java/swing/splashScreen.html <br>
+
 Sources for JTable (tutorial on JTable): <br>
 https://www.youtube.com/watch?v=iMBfneE2Ztg <br>
 https://www.youtube.com/watch?v=22MBsRYuM4Q <br>

@@ -51,7 +51,7 @@
     {
         "credits": 3,
         "courseCode": 100,
-        "grade": 98,
+        "grade": 82,
         "subjectCode": "PHYS",
         "status": 0
     },
@@ -85,13 +85,6 @@
     },
     {
         "credits": 3,
-        "courseCode": 150,
-        "grade": 73,
-        "subjectCode": "WRDS",
-        "status": 0
-    },
-    {
-        "credits": 3,
         "courseCode": 101,
         "grade": 49,
         "subjectCode": "PSYC",
@@ -99,23 +92,16 @@
     },
     {
         "credits": 3,
-        "courseCode": 100,
-        "grade": -1,
-        "subjectCode": "LING",
-        "status": 2
-    },
-    {
-        "credits": 3,
-        "courseCode": 220,
-        "grade": -1,
-        "subjectCode": "PHIL",
-        "status": 2
-    },
-    {
-        "credits": 3,
         "courseCode": 200,
         "grade": -1,
         "subjectCode": "MATH",
+        "status": 2
+    },
+    {
+        "credits": 3,
+        "courseCode": 150,
+        "grade": -1,
+        "subjectCode": "WRDS",
         "status": 2
     }
 ]}

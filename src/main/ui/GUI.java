@@ -40,6 +40,9 @@ public class GUI extends MouseAdapter {
 
         frame = new JFrame();
         frame.setSize(800, 800);
+        JLabel courseTableLabel = new JLabel("Your courses:");
+        courseTableLabel.setBounds(8, 97, 120, 25);
+        courseTableLabel.setFont(new Font("Whitney", Font.BOLD, 15));
 
         setUpTable();
         setUpButtons();
@@ -48,6 +51,7 @@ public class GUI extends MouseAdapter {
 
         frame.setLayout(null);
         frame.getContentPane().setBackground(Color.white);
+        frame.add(courseTableLabel);
         frame.add(new HeaderPanel(frame));
         frame.setTitle("Degree Planner");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,7 +84,7 @@ public class GUI extends MouseAdapter {
         courseTable.addMouseListener(this);
 
         JScrollPane scrollPane = new JScrollPane(courseTable);
-        scrollPane.setBounds(0, 90, frame.getWidth(), 300);
+        scrollPane.setBounds(0, 125, frame.getWidth(), 300);
         scrollPane.setBorder(BorderFactory.createLineBorder(new Color(151, 212, 233), 4));
 
         frame.add(scrollPane);
@@ -96,10 +100,10 @@ public class GUI extends MouseAdapter {
         JButton updateButton = new JButton("Update");
         JButton clearButton = new JButton("Clear");
 
-        addButton.setBounds(485, 500, 70, 40);
-        deleteButton.setBounds(485, 560, 70, 40);
-        updateButton.setBounds(485, 620, 70, 40);
-        clearButton.setBounds(485, 680, 70, 40);
+        addButton.setBounds(505, 520, 70, 40);
+        deleteButton.setBounds(505, 580, 70, 40);
+        updateButton.setBounds(505, 640, 70, 40);
+        clearButton.setBounds(505, 700, 70, 40);
 
         addButton.addActionListener(e -> addCourseOperation());
         clearButton.addActionListener(e -> clearFields());
@@ -123,11 +127,11 @@ public class GUI extends MouseAdapter {
         JLabel status = new JLabel("<html><b>Status:</b><br>(0: completed; 1: taking; 2: planning)</html>");
         JLabel credits = new JLabel("<html><b>Number of Credits:</b></html>");
 
-        subjectCode.setBounds(185, 490, 145, 40);
-        courseCode.setBounds(185, 540, 145, 40);
-        grade.setBounds(185, 590, 145, 40);
-        status.setBounds(185, 640, 145, 47);
-        credits.setBounds(185, 690, 145, 40);
+        subjectCode.setBounds(205, 510, 145, 40);
+        courseCode.setBounds(205, 560, 145, 40);
+        grade.setBounds(205, 610, 145, 40);
+        status.setBounds(205, 660, 145, 47);
+        credits.setBounds(205, 710, 145, 40);
 
         frame.add(subjectCode);
         frame.add(courseCode);
@@ -145,11 +149,11 @@ public class GUI extends MouseAdapter {
         statusField = new JTextField();
         creditsField = new JTextField();
 
-        subjectCodeField.setBounds(335, 490, 120, 40);
-        courseCodeField.setBounds(335, 540, 120, 40);
-        gradeField.setBounds(335, 590, 120, 40);
-        statusField.setBounds(335, 640, 120, 40);
-        creditsField.setBounds(335, 690, 120, 40);
+        subjectCodeField.setBounds(355, 510, 120, 40);
+        courseCodeField.setBounds(355, 560, 120, 40);
+        gradeField.setBounds(355, 610, 120, 40);
+        statusField.setBounds(355, 660, 120, 40);
+        creditsField.setBounds(355, 710, 120, 40);
 
         frame.add(subjectCodeField);
         frame.add(courseCodeField);
