@@ -96,12 +96,5 @@
         "grade": -1,
         "subjectCode": "MATH",
         "status": 2
-    },
-    {
-        "credits": 3,
-        "courseCode": 150,
-        "grade": -1,
-        "subjectCode": "WRDS",
-        "status": 2
     }
 ]}

@@ -41,7 +41,7 @@ public class GUI extends MouseAdapter {
         frame = new JFrame();
         frame.setSize(800, 800);
         JLabel courseTableLabel = new JLabel("Your courses:");
-        courseTableLabel.setBounds(8, 97, 120, 25);
+        courseTableLabel.setBounds(8, 97, 125, 25);
         courseTableLabel.setFont(new Font("Whitney", Font.BOLD, 15));
 
         setUpTable();
@@ -82,6 +82,8 @@ public class GUI extends MouseAdapter {
         courseTable.setFont(new Font("Whitney", Font.PLAIN, 14));
         courseTable.setRowHeight(18);
         courseTable.addMouseListener(this);
+        courseTable.setShowVerticalLines(false);
+        courseTable.setGridColor(new Color(0, 167, 225));
 
         JScrollPane scrollPane = new JScrollPane(courseTable);
         scrollPane.setBounds(0, 125, frame.getWidth(), 300);
@@ -301,21 +303,21 @@ public class GUI extends MouseAdapter {
             jsonWriter.open();
             jsonWriter.write(degreePlanner);
             jsonWriter.close();
-            System.out.println("Saved Degree Planner to " + JSON_STORE);
+            JOptionPane.showMessageDialog(frame, "Saved Degree Planner to " + JSON_STORE);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            JOptionPane.showMessageDialog(frame, "Unable to write to file: " + JSON_STORE);
         }
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file; if IOException is caught, print a message.
+    // EFFECTS: loads workroom from file; if IOException is caught, print show a message dialog.
     public void loadDegreePlanner() {
         try {
             degreePlanner = jsonReader.read();
-            System.out.println("Loaded Degree Planner from " + JSON_STORE);
+            updateCourseList();
+            JOptionPane.showMessageDialog(frame, "Loaded Degree Planner from " + JSON_STORE);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+            JOptionPane.showMessageDialog(frame, "Unable to read from file: " + JSON_STORE);
         }
-        updateCourseList();
     }
 }
