@@ -54,6 +54,33 @@ class CourseTest {
     }
 
     @Test
+    public void testSetSubjectCode() {
+        course2.setSubjectCode("ECON");
+        assertEquals("ECON", course2.getSubjectCode());
+
+        course1.setSubjectCode("PHYS");
+        assertEquals("PHYS", course1.getSubjectCode());
+    }
+
+    @Test
+    public void testSetCourseCode() {
+        course1.setCourseCode(310);
+        assertEquals(310, course1.getCourseCode());
+
+        course2.setCourseCode(170);
+        assertEquals(170, course2.getCourseCode());
+    }
+
+    @Test
+    public void testSetCreditNum() {
+        course1.setCreditsNum(3);
+        assertEquals(3, course1.getCredit());
+
+        course2.setCreditsNum(1);
+        assertEquals(1, course2.getCredit());
+    }
+
+    @Test
     public void testPercentageToLetterGrade() {
         assertEquals("A+", course1.percentageToLetterGrade(91));
         assertEquals("A+", course1.percentageToLetterGrade(90));

@@ -3,8 +3,10 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+// Represents a save button that is used to save the degree planner
 public class SaveButton extends JButton {
 
+    // EFFECTS: sets up a save button and action listener is added to it
     public SaveButton(GUI gui) {
         setText("Save");
         setBounds(550, 420, 80, 35);

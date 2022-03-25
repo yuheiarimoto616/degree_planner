@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+// Graphical user interface for degree planner
 public class GUI extends MouseAdapter {
     private static final String JSON_STORE = "./data/degreeplanner.json";
     private JsonReader jsonReader;
@@ -24,18 +25,14 @@ public class GUI extends MouseAdapter {
     private JFrame frame;
     private DefaultTableModel model;
     private JTable courseTable;
-    private JButton loadButton;
-    private JButton saveButton;
-    private JButton addButton;
-    private JButton deleteButton;
-    private JButton updateButton;
-    private JButton clearButton;
     private JTextField subjectCodeField;
     private JTextField courseCodeField;
     private JTextField gradeField;
     private JTextField statusField;
     private JTextField creditsField;
 
+    // EFFECTS: instantiates degree planner, jsonReader, jsonWriter, and main frame to create a GUI for
+    //          degree planner, and sets up the frame as well as loading screen
     public GUI() {
         degreePlanner = new DegreePlanner();
         jsonReader = new JsonReader(JSON_STORE);
@@ -45,19 +42,13 @@ public class GUI extends MouseAdapter {
         frame.setSize(800, 800);
 
         setUpTable();
-
-        JScrollPane scrollPane = new JScrollPane(courseTable);
-        scrollPane.setBounds(0, 90, frame.getWidth(), 300);
-        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(151, 212, 233), 4));
-
-        setUpTextFields();
         setUpButtons();
         setUpInstructions();
+        setUpTextFields();
 
         frame.setLayout(null);
         frame.getContentPane().setBackground(Color.white);
         frame.add(new HeaderPanel(frame));
-        frame.add(scrollPane);
         frame.setTitle("Degree Planner");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -66,12 +57,15 @@ public class GUI extends MouseAdapter {
         new LoadingScreen(frame);
     }
 
-    public static void main(String[] args) {
-        new GUI();
-    }
-
+    // MODIFIES: this
+    // EFFECTS: instantiates and sets up table to display courses
     public void setUpTable() {
-        model = new DefaultTableModel();
+        model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         model.addColumn("Course");
         model.addColumn("Credits");
         model.addColumn("Status");
@@ -81,14 +75,31 @@ public class GUI extends MouseAdapter {
         courseTable = new JTable(model);
         courseTable.setPreferredScrollableViewportSize(new Dimension(500, 300));
         courseTable.setFillsViewportHeight(true);
-        courseTable.setFont(new Font("Whitney", Font.PLAIN, 12));
+        courseTable.setFont(new Font("Whitney", Font.PLAIN, 14));
+        courseTable.setRowHeight(18);
         courseTable.addMouseListener(this);
+
+        JScrollPane scrollPane = new JScrollPane(courseTable);
+        scrollPane.setBounds(0, 90, frame.getWidth(), 300);
+        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(151, 212, 233), 4));
+
+        frame.add(scrollPane);
     }
 
     // MODIFIES: this
-    // EFFECTS: set up buttons by adding action listener to them and adding them to frame
+    // EFFECTS: instantiates and sets up buttons by adding action listener to them and adding them to frame
     public void setUpButtons() {
-        createButtons();
+        JButton loadButton = new LoadButton(this);
+        JButton saveButton = new SaveButton(this);
+        JButton addButton = new JButton("Add");
+        JButton deleteButton = new JButton("Delete");
+        JButton updateButton = new JButton("Update");
+        JButton clearButton = new JButton("Clear");
+
+        addButton.setBounds(485, 500, 70, 40);
+        deleteButton.setBounds(485, 560, 70, 40);
+        updateButton.setBounds(485, 620, 70, 40);
+        clearButton.setBounds(485, 680, 70, 40);
 
         addButton.addActionListener(e -> addCourseOperation());
         clearButton.addActionListener(e -> clearFields());
@@ -104,26 +115,7 @@ public class GUI extends MouseAdapter {
     }
 
     // MODIFIES: this
-    // EFFECTS: instantiates, set bounds and text of buttons that are used in degree planner
-    public void createButtons() {
-        loadButton = new LoadButton(this);
-        saveButton = new SaveButton(this);
-        addButton = new JButton();
-        deleteButton = new JButton();
-        updateButton = new JButton();
-        clearButton = new JButton();
-
-        addButton.setBounds(485, 500, 70, 40);
-        deleteButton.setBounds(485, 560, 70, 40);
-        updateButton.setBounds(485, 620, 70, 40);
-        clearButton.setBounds(485, 680, 70, 40);
-
-        addButton.setText("Add");
-        deleteButton.setText("Delete");
-        updateButton.setText("Update");
-        clearButton.setText("Clear");
-    }
-
+    // EFFECTS: instantiates and sets up JLabels for instruction on adding course, and adds them to the frame
     public void setUpInstructions() {
         JLabel subjectCode = new JLabel("<html><b>Subject Code:</b><br>(e.g. CPSC)</html>");
         JLabel courseCode = new JLabel("<html><b>Course Code:</b><br>(e.g. 210)</html>");
@@ -137,7 +129,6 @@ public class GUI extends MouseAdapter {
         status.setBounds(185, 640, 145, 47);
         credits.setBounds(185, 690, 145, 40);
 
-
         frame.add(subjectCode);
         frame.add(courseCode);
         frame.add(grade);
@@ -145,6 +136,8 @@ public class GUI extends MouseAdapter {
         frame.add(credits);
     }
 
+    // MODIFIES: this
+    // EFFECTS: instantiates and sets up text fields for course data entry, and add them to the frame
     public void setUpTextFields() {
         subjectCodeField = new JTextField();
         courseCodeField = new JTextField();
@@ -166,36 +159,7 @@ public class GUI extends MouseAdapter {
     }
 
     // MODIFIES: this
-    // EFFECTS: set the location of the frame to the center of the screen
-    public void setFrameLocation(JFrame frame) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension frameSize = frame.getSize();
-        int xpos = (screenSize.width / 2) - (frameSize.width / 2);
-        int ypos = (screenSize.height / 2) - (frameSize.height / 2);
-        frame.setLocation(xpos, ypos);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        int index = courseTable.getSelectedRow();
-
-        subjectCodeField.setText(model.getValueAt(index, 0).toString().substring(0, 4));
-        courseCodeField.setText(model.getValueAt(index, 0).toString().substring(5));
-        if (model.getValueAt(index, 3).toString().equals("NA")) {
-            gradeField.setText("NA");
-        } else {
-            gradeField.setText(model.getValueAt(index, 3).toString());
-        }
-        if (model.getValueAt(index, 2).toString().equals("Completed")) {
-            statusField.setText("0");
-        } else if ((model.getValueAt(index, 2).toString().equals("In progress"))) {
-            statusField.setText("1");
-        } else {
-            statusField.setText("2");
-        }
-        creditsField.setText(model.getValueAt(index, 1).toString());
-    }
-
+    // EFFECTS: updates the table listing courses based on listOfCourses of degree planner
     public void updateCourseList() {
         List<Course> listOfCourses = degreePlanner.getListOfCourses();
 
@@ -205,6 +169,8 @@ public class GUI extends MouseAdapter {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: add a course to the table listing courses based on the given course
     public void addACourseToTable(Course course) {
         String courseName = course.getSubjectCode() + " " + course.getCourseCode();
         int credits = (int) course.getCredit();
@@ -226,6 +192,9 @@ public class GUI extends MouseAdapter {
         model.addRow(courseData);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a course to the degree planner based on course data entered in text
+    //          fields, and updates the table; all the fields are cleared after adding a course is completed
     public void addCourseOperation() {
         String subjectCode = subjectCodeField.getText().toUpperCase(Locale.ROOT);
         int courseCode = Integer.parseInt(courseCodeField.getText());
@@ -244,6 +213,10 @@ public class GUI extends MouseAdapter {
         clearFields();
     }
 
+    // MODIFIES: this
+    // EFFECTS: based on a row selected and updated course data entered in text fields,
+    //          specified course in degree planner and the table are updated;
+    //          all the fields are cleared after the operation
     public void updateACourseOperation() {
         int index = courseTable.getSelectedRow();
 
@@ -262,19 +235,59 @@ public class GUI extends MouseAdapter {
         clearFields();
     }
 
+    // MODIFIES: this
+    // EFFECTS: deletes course in degree planner based on a row selected,
+    //          and updates the table, clearing all the text fields
     public void deleteCourseOperation() {
         int index = courseTable.getSelectedRow();
 
         degreePlanner.getListOfCourses().remove(index);
         updateCourseList();
+        clearFields();
     }
 
+    // MODIFIES: this
+    // EFFECTS: clears all the text fields
     public void clearFields() {
         subjectCodeField.setText("");
         courseCodeField.setText("");
         creditsField.setText("");
         statusField.setText("");
         gradeField.setText("");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: set the location of the frame to the center of the screen
+    public void setFrameLocation(JFrame frame) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = frame.getSize();
+        int xpos = (screenSize.width / 2) - (frameSize.width / 2);
+        int ypos = (screenSize.height / 2) - (frameSize.height / 2);
+        frame.setLocation(xpos, ypos);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: when mouse is clicked on one of the rows of the table,
+    //          row data is reflected on all the text fields
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int index = courseTable.getSelectedRow();
+
+        subjectCodeField.setText(model.getValueAt(index, 0).toString().substring(0, 4));
+        courseCodeField.setText(model.getValueAt(index, 0).toString().substring(5));
+        if (model.getValueAt(index, 3).toString().equals("NA")) {
+            gradeField.setText("NA");
+        } else {
+            gradeField.setText(model.getValueAt(index, 3).toString());
+        }
+        if (model.getValueAt(index, 2).toString().equals("Completed")) {
+            statusField.setText("0");
+        } else if ((model.getValueAt(index, 2).toString().equals("In progress"))) {
+            statusField.setText("1");
+        } else {
+            statusField.setText("2");
+        }
+        creditsField.setText(model.getValueAt(index, 1).toString());
     }
 
     // EFFECTS: if FileNotFoundException is caught, print a message;

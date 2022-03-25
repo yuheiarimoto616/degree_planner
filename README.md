@@ -29,10 +29,12 @@ my saved degree planner from file.
 
 *source: TellerApp (learned how to use scanner) & JsonSerializationDemo
 
-Citations:
+Citations: <br>
 UBC Logo: https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets/ <br>
 https://www.freelogovectors.net/ubc-logo-university-of-british-columbia/ <br>
-Java Swing Tutorial: https://www.youtube.com/watch?v=Kmgo00avvEw <br>
+Java Swing Tutorial (including JLabel, JButton, JTextField): <br>
+https://www.youtube.com/watch?v=Kmgo00avvEw <br>
+https://web.mit.edu/6.005/www/sp14/psets/ps4/java-6-tutorial/components.html <br>
 Source for SplashWindow: <br>
 https://www.infoworld.com/article/2077467/java-tip-104--make-a-splash-with-swing.html <br>
 https://www.roseindia.net/tutorial/java/swing/splashScreen.html <br>
@@ -41,4 +43,5 @@ https://www.youtube.com/watch?v=iMBfneE2Ztg <br>
 https://www.youtube.com/watch?v=22MBsRYuM4Q <br>
 https://1bestcsharp.blogspot.com/2015/05/java-jtable-add-delete-update-row.html <br>
 https://stackoverflow.com/questions/3549206/how-to-add-row-in-jtable <br>
-https://docs.oracle.com/javase/tutorial/uiswing/components/table.html#data
+https://docs.oracle.com/javase/tutorial/uiswing/components/table.html#data <br>
+https://stackoverflow.com/questions/1990817/how-to-make-a-jtable-non-editable

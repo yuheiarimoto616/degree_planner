@@ -3,10 +3,11 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+// Represents a loading screen that is shown before showing degree planner
 public class LoadingScreen extends JWindow {
 
     // MODIFIES: this, frame
-    // EFFECTS: create a loading screen that shows on a screen for a while before showing frame
+    // EFFECTS: create a loading screen that is shown on a screen for a while before showing frame
     public LoadingScreen(JFrame frame) {
         JLabel splashLabel = setUpLabel();
 
