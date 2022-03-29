@@ -92,9 +92,9 @@ public class Course implements Writable {
             this.grade = grade;
             Event newEvent;
             if (grade == -1) {
-                newEvent = new Event(getCourseName() + "'s grade changed to NA");
+                newEvent = new Event(getCourseName() + "'s grade changed to NA.");
             } else {
-                newEvent = new Event(getCourseName() + "'s grade changed to " + grade + "%");
+                newEvent = new Event(getCourseName() + "'s grade changed to " + grade + "%.");
             }
             EventLog.getInstance().logEvent(newEvent);
         }
@@ -108,7 +108,7 @@ public class Course implements Writable {
     public void setStatus(int status) {
         if (this.status != status) {
             this.status = status;
-            Event newEvent = new Event(getCourseName() + "'s status changed to " + getStatusInString());
+            Event newEvent = new Event(getCourseName() + "'s status changed to " + getStatusInString() + ".");
             EventLog.getInstance().logEvent(newEvent);
         }
     }
@@ -124,7 +124,7 @@ public class Course implements Writable {
             String originalCourseName = getCourseName();
             this.subjectCode = subjectCode;
             this.courseCode = courseCode;
-            Event newEvent = new Event(originalCourseName + " changed to " + getCourseName());
+            Event newEvent = new Event(originalCourseName + " changed to " + getCourseName() + ".");
             EventLog.getInstance().logEvent(newEvent);
         }
     }
@@ -138,7 +138,7 @@ public class Course implements Writable {
     public void setCreditsNum(int credits) {
         if (this.credits != credits) {
             this.credits = credits;
-            Event newEvent = new Event(getCourseName() + "'s number of credits changed to " + credits);
+            Event newEvent = new Event(getCourseName() + "'s number of credits changed to " + credits + ".");
             EventLog.getInstance().logEvent(newEvent);
         }
     }

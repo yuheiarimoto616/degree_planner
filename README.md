@@ -29,9 +29,11 @@ my saved degree planner from file.
 
 ## Phase 4: Task2
 - CPSC 110 added to Degree Planner.
-- CPSC 110's number of credits changed to 4
-- CPSC 110's status changed to Planning
-- CPSC 110's grade changed to 70%
+- CPSC 110's number of credits changed to 4.
+- CPSC 110's status changed to Planning.
+- CPSC 110's grade changed to 70%.
+- CPSC 110 deleted from Degree Planner.
+- CPSC 221 changed to CPSC 213.
 
 
 ###Citations: <br>

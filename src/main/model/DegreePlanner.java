@@ -40,7 +40,7 @@ public class DegreePlanner implements Writable {
         String deletedCourse = listOfCourses.get(index).getCourseName();
 
         listOfCourses.remove(index);
-        Event deleteEvent = new Event(deletedCourse + " deleted from Degree Planner");
+        Event deleteEvent = new Event(deletedCourse + " deleted from Degree Planner.");
         EventLog.getInstance().logEvent(deleteEvent);
     }
 
