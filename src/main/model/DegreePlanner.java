@@ -10,12 +10,14 @@ import java.util.List;
 // Represents a degree planner having list of courses added by user
 public class DegreePlanner implements Writable {
     private List<Course> listOfCourses; // list of courses added to the degree planner
+    private EventLog eventLog;
 
     /*
      * EFFECTS: empty ArrayList for courses is set
      */
     public DegreePlanner() {
         this.listOfCourses = new ArrayList<>();
+        eventLog = EventLog.getInstance();
     }
 
     /*

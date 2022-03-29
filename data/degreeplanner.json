@@ -2,16 +2,9 @@
     {
         "credits": 4,
         "courseCode": 110,
-        "grade": 93,
+        "grade": 97,
         "subjectCode": "CPSC",
         "status": 0
-    },
-    {
-        "credits": 4,
-        "courseCode": 121,
-        "grade": -1,
-        "subjectCode": "CPSC",
-        "status": 1
     },
     {
         "credits": 3,
@@ -19,20 +12,6 @@
         "grade": 91,
         "subjectCode": "DSCI",
         "status": 0
-    },
-    {
-        "credits": 4,
-        "courseCode": 210,
-        "grade": -1,
-        "subjectCode": "CPSC",
-        "status": 1
-    },
-    {
-        "credits": 3,
-        "courseCode": 113,
-        "grade": -1,
-        "subjectCode": "SCIE",
-        "status": 1
     },
     {
         "credits": 3,
@@ -43,17 +22,31 @@
     },
     {
         "credits": 3,
+        "courseCode": 100,
+        "grade": 98,
+        "subjectCode": "PHYS",
+        "status": 0
+    },
+    {
+        "credits": 3,
         "courseCode": 101,
         "grade": 80,
         "subjectCode": "ECON",
         "status": 0
     },
     {
-        "credits": 3,
-        "courseCode": 100,
-        "grade": 82,
-        "subjectCode": "PHYS",
-        "status": 0
+        "credits": 4,
+        "courseCode": 121,
+        "grade": -1,
+        "subjectCode": "CPSC",
+        "status": 1
+    },
+    {
+        "credits": 4,
+        "courseCode": 210,
+        "grade": -1,
+        "subjectCode": "CPSC",
+        "status": 1
     },
     {
         "credits": 3,
@@ -63,38 +56,10 @@
         "status": 1
     },
     {
-        "credits": 4,
-        "courseCode": 213,
-        "grade": -1,
-        "subjectCode": "CPSC",
-        "status": 2
-    },
-    {
-        "credits": 4,
-        "courseCode": 221,
-        "grade": -1,
-        "subjectCode": "CPSC",
-        "status": 2
-    },
-    {
-        "credits": 4,
-        "courseCode": 111,
-        "grade": -1,
-        "subjectCode": "CHEM",
-        "status": 2
-    },
-    {
         "credits": 3,
-        "courseCode": 101,
-        "grade": 49,
-        "subjectCode": "PSYC",
-        "status": 0
-    },
-    {
-        "credits": 3,
-        "courseCode": 200,
+        "courseCode": 113,
         "grade": -1,
-        "subjectCode": "MATH",
-        "status": 2
+        "subjectCode": "SCIE",
+        "status": 1
     }
 ]}
