@@ -67,8 +67,7 @@ public class JsonReader {
         int status = jsonObject.getInt("status");
         int credits = jsonObject.getInt("credits");
 
-        Course course = new Course(subjectCode, courseCode, credits, status);
-        course.setGrade(grade);
+        Course course = new Course(subjectCode, courseCode, credits, status, grade);
         degreePlanner.addCourse(course);
     }
 }

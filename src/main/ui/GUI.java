@@ -2,6 +2,8 @@ package ui;
 
 import model.Course;
 import model.DegreePlanner;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -10,8 +12,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,7 +59,7 @@ public class GUI extends MouseAdapter {
         frame.add(courseTableLabel);
         frame.add(new HeaderPanel(frame));
         frame.setTitle("Degree Planner");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        closingOperation(frame);
         frame.setResizable(false);
         setFrameLocation(frame);
 
@@ -207,10 +212,13 @@ public class GUI extends MouseAdapter {
         int credits = Integer.parseInt(creditsField.getText());
         int status = Integer.parseInt(statusField.getText());
 
-        Course course = new Course(subjectCode, courseCode, credits, status);
+        Course course;
 
         if (!gradeField.getText().toLowerCase(Locale.ROOT).equals("na")) {
-            course.setGrade(Integer.parseInt(gradeField.getText()));
+            int grade = Integer.parseInt(gradeField.getText());
+            course = new Course(subjectCode, courseCode, credits, status, grade);
+        } else {
+            course = new Course(subjectCode, courseCode, credits, status, -1);
         }
 
         degreePlanner.addCourse(course);
@@ -227,8 +235,10 @@ public class GUI extends MouseAdapter {
         int index = courseTable.getSelectedRow();
 
         Course course = degreePlanner.getListOfCourses().get(index);
-        course.setSubjectCode(subjectCodeField.getText().toUpperCase(Locale.ROOT));
-        course.setCourseCode(Integer.parseInt(courseCodeField.getText()));
+
+        String subjectCode = subjectCodeField.getText().toUpperCase(Locale.ROOT);
+        int courseCode = Integer.parseInt(courseCodeField.getText());
+        course.setCourseName(subjectCode, courseCode);
         course.setCreditsNum(Integer.parseInt(creditsField.getText()));
         course.setStatus(Integer.parseInt(statusField.getText()));
         if (!gradeField.getText().toLowerCase(Locale.ROOT).equals("na")) {
@@ -247,7 +257,7 @@ public class GUI extends MouseAdapter {
     public void deleteCourseOperation() {
         int index = courseTable.getSelectedRow();
 
-        degreePlanner.getListOfCourses().remove(index);
+        degreePlanner.deleteCourse(index);
         updateCourseList();
         clearFields();
     }
@@ -270,6 +280,21 @@ public class GUI extends MouseAdapter {
         int xpos = (screenSize.width / 2) - (frameSize.width / 2);
         int ypos = (screenSize.height / 2) - (frameSize.height / 2);
         frame.setLocation(xpos, ypos);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: specifies closing operation in which all the logged events are printed to console
+    //          before closing the application
+    public void closingOperation(JFrame frame) {
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+                Iterator<Event> log = EventLog.getInstance().iterator();
+                while (log.hasNext()) {
+                    System.out.println(log.next().toString());
+                }
+                System.exit(0);
+            }
+        });
     }
 
     // MODIFIES: this

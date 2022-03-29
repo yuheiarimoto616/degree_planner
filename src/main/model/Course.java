@@ -20,16 +20,16 @@ public class Course implements Writable {
      *          status is set to "Completed" if status is 0, to "In progress" if status is 1,
      *          and to "Planning" if status is 2,
      */
-    public Course(String subjectCode, int courseCode, int numCredits, int status) {
+    public Course(String subjectCode, int courseCode, int numCredits, int status, int grade) {
         this.subjectCode = subjectCode;
         this.courseCode = courseCode;
         this.credits = numCredits;
         this.status = status;
-        this.grade = -1;
+        this.grade = grade;
     }
 
     /*
-     * EFFECTS: return status in string ;
+     * EFFECTS: return status in string:
      *          0 to "Completed";
      *          1 to "In progress"
      *          2 to "Planning"
@@ -45,12 +45,10 @@ public class Course implements Writable {
     }
 
     /*
-     * REQUIRES: grade must be in range [0, 100]
-     * MODIFIES: this
-     * EFFECTS: set course's grade and percentage grade
+     * EFFECTS: return course name in the form "SubjectCode CourseCode" (e.g. CPSC 210)
      */
-    public void setGrade(int grade) {
-        this.grade = grade;
+    public String getCourseName() {
+        return getSubjectCode() + " " + getCourseCode();
     }
 
     /*
@@ -84,11 +82,65 @@ public class Course implements Writable {
     }
 
     /*
+     * REQUIRES: grade must be in range [-1, 100] (-1 represents NA)
      * MODIFIES: this
-     * EFFECTS: set course's status
+     * EFFECTS: if given grade is different from the current grade, sets course's grade to the given one and
+     *          logs the update to the EventLog; otherwise, does nothing
+     */
+    public void setGrade(int grade) {
+        if (this.grade != grade) {
+            this.grade = grade;
+            Event newEvent;
+            if (grade == -1) {
+                newEvent = new Event(getCourseName() + "'s grade changed to NA");
+            } else {
+                newEvent = new Event(getCourseName() + "'s grade changed to " + grade + "%");
+            }
+            EventLog.getInstance().logEvent(newEvent);
+        }
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: if given status is different from the current status, sets course's status to the give one
+     *          and logs the update to the EventLog; otherwise, does nothing
      */
     public void setStatus(int status) {
-        this.status = status;
+        if (this.status != status) {
+            this.status = status;
+            Event newEvent = new Event(getCourseName() + "'s status changed to " + getStatusInString());
+            EventLog.getInstance().logEvent(newEvent);
+        }
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: Based on given subjectCode and courseCode, if new courseName is
+     *          different from the current courseName, updates subjectCode and courseCode
+     *          and logs the update to the EventLog; otherwise, does nothing
+     */
+    public void setCourseName(String subjectCode, int courseCode) {
+        if (!getCourseName().equals(subjectCode + " " + courseCode)) {
+            String originalCourseName = getCourseName();
+            this.subjectCode = subjectCode;
+            this.courseCode = courseCode;
+            Event newEvent = new Event(originalCourseName + " changed to " + getCourseName());
+            EventLog.getInstance().logEvent(newEvent);
+        }
+    }
+
+    /*
+     * MODIFIES: this
+     * EFFECTS: If given credits number is different from the current credits number,
+     *          sets course's credits to the given one and logs the update to the EventLog;
+     *          otherwise, does nothing
+     */
+    public void setCreditsNum(int credits) {
+        if (this.credits != credits) {
+            this.credits = credits;
+            Event newEvent = new Event(getCourseName() + "'s number of credits changed to " + credits);
+            EventLog.getInstance().logEvent(newEvent);
+        }
     }
 
     // MODIFIES: this
@@ -101,12 +153,6 @@ public class Course implements Writable {
     // EFFECTS: set courseCode to the given code
     public void setCourseCode(int courseCode) {
         this.courseCode = courseCode;
-    }
-
-    // MODIFIES: this
-    // EFFECTS: set credits number to the given number
-    public void setCreditsNum(int credits) {
-        this.credits = credits;
     }
 
     // getters
@@ -146,3 +192,5 @@ public class Course implements Writable {
         return json;
     }
 }
+
+

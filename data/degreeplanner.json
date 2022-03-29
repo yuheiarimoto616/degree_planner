@@ -61,5 +61,12 @@
         "grade": -1,
         "subjectCode": "SCIE",
         "status": 1
+    },
+    {
+        "credits": 4,
+        "courseCode": 221,
+        "grade": -1,
+        "subjectCode": "CPSC",
+        "status": 2
     }
 ]}

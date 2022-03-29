@@ -27,9 +27,17 @@ to my planner with grades, its status, and number of credits.
   - As a user, when I select to load, I want to be able to load 
 my saved degree planner from file.
 
-*source: TellerApp (learned how to use scanner) & JsonSerializationDemo
+## Phase 4: Task2
+- CPSC 110 added to Degree Planner.
+- CPSC 110's number of credits changed to 4
+- CPSC 110's status changed to Planning
+- CPSC 110's grade changed to 70%
 
-Citations: <br>
+
+###Citations: <br>
+Learned how to use scanner:<br>
+TellerApp & JsonSerializationDemo <br>
+
 UBC Logo: <br>
 https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets/ <br>
 https://www.freelogovectors.net/ubc-logo-university-of-british-columbia/ <br>
@@ -52,4 +60,10 @@ https://docs.oracle.com/javase/tutorial/uiswing/components/table.html#data <br>
 https://stackoverflow.com/questions/1990817/how-to-make-a-jtable-non-editable
 
 JOptionPane: <br>
-https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html <br>
+
+Tutorial on Iterator:<br>
+https://www.w3schools.com/java/java_iterator.asp <br>
+
+Learned how to customize operation for setDefaultCloseOperation: <br>
+https://stackoverflow.com/questions/6084039/create-custom-operation-for-setdefaultcloseoperation

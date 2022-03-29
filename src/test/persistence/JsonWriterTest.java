@@ -45,9 +45,9 @@ public class JsonWriterTest extends JsonTest {
     void testWriterGeneralDegreePlanner() {
         try {
             DegreePlanner dp = new DegreePlanner();
-            dp.addCourse(new Course("CPSC", 210, 4, 1));
-            dp.addCourse(new Course("WRDS", 150, 3, 2));
-            Course cpsc110 = new Course("CPSC", 110, 4, 0);
+            dp.addCourse(new Course("CPSC", 210, 4, 1, -1));
+            dp.addCourse(new Course("WRDS", 150, 3, 2, -1));
+            Course cpsc110 = new Course("CPSC", 110, 4, 0, -1);
             cpsc110.setGrade(97);
             dp.addCourse(cpsc110);
             JsonWriter jsonWriter = new JsonWriter("./data/testWriterGeneralDegreePlanner.json");

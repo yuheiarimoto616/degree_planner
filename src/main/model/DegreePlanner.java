@@ -10,31 +10,38 @@ import java.util.List;
 // Represents a degree planner having list of courses added by user
 public class DegreePlanner implements Writable {
     private List<Course> listOfCourses; // list of courses added to the degree planner
-    private EventLog eventLog;
 
     /*
      * EFFECTS: empty ArrayList for courses is set
      */
     public DegreePlanner() {
         this.listOfCourses = new ArrayList<>();
-        eventLog = EventLog.getInstance();
     }
 
     /*
      * REQUIRES: course should not be already in the listOfCourses
      * MODIFIES: this
-     * EFFECTS: add specified course to the listOfCourses
+     * EFFECTS: add specified course to the listOfCourses;
+     *          logs the event of adding the course to EventLog
      */
     public void addCourse(Course course) {
         listOfCourses.add(course);
+
+        Event addEvent = new Event(course.getCourseName() + " added to Degree Planner.");
+        EventLog.getInstance().logEvent(addEvent);
     }
 
     /*
      * MODIFIES: this
-     * EFFECTS: remove course at the index from the listOfCourses
+     * EFFECTS: remove course at the index from the listOfCourses;
+     *          logs the event of deleting the course to EventLog
      */
     public void deleteCourse(int index) {
+        String deletedCourse = listOfCourses.get(index).getCourseName();
+
         listOfCourses.remove(index);
+        Event deleteEvent = new Event(deletedCourse + " deleted from Degree Planner");
+        EventLog.getInstance().logEvent(deleteEvent);
     }
 
     /*

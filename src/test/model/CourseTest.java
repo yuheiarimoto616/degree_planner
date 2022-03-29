@@ -12,9 +12,9 @@ class CourseTest {
 
     @BeforeEach
     public void setUp() {
-        course1 = new Course("CPSC", 210, 4, 2);
-        course2 = new Course("PHYS", 100, 3, 0);
-        course3 = new Course("DSCI", 100, 3, 1);
+        course1 = new Course("CPSC", 210, 4, 2, -1);
+        course2 = new Course("PHYS", 100, 3, 0, -1);
+        course3 = new Course("DSCI", 100, 3, 1, -1);
     }
 
     @Test
@@ -40,6 +40,13 @@ class CourseTest {
         assertEquals("Planning", course1.getStatusInString());
         assertEquals("Completed", course2.getStatusInString());
         assertEquals("In progress", course3.getStatusInString());
+    }
+
+    @Test
+    public void testGetCourseName() {
+        assertEquals("CPSC 210", course1.getCourseName());
+        assertEquals("PHYS 100", course2.getCourseName());
+        assertEquals("DSCI 100", course3.getCourseName());
     }
 
     @Test

@@ -117,7 +117,7 @@ public class DegreePlannerApp {
         System.out.println("\nStatus (choose 0 for completed, 1 for currently taking, and 2 for planning):");
         int status = input.nextInt();
 
-        Course course = new Course(subjectCode, courseNum, credits, status);
+        Course course = new Course(subjectCode, courseNum, credits, status, -1);
 
         if (status == 0) {
             System.out.println("\nGrade (%):");
