@@ -44,7 +44,7 @@ For example, I could make setUpTable method in GUI class as new class that exten
 
 
 
-###Citations: <br>
+###Citations:
 Learned how to use scanner:<br>
 TellerApp & JsonSerializationDemo <br>
 
