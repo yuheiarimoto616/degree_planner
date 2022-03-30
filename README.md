@@ -27,13 +27,21 @@ to my planner with grades, its status, and number of credits.
   - As a user, when I select to load, I want to be able to load 
 my saved degree planner from file.
 
-## Phase 4: Task2
+## Phase 4: Task 2
 - CPSC 110 added to Degree Planner.
 - CPSC 110's number of credits changed to 4.
 - CPSC 110's status changed to Planning.
 - CPSC 110's grade changed to 70%.
 - CPSC 110 deleted from Degree Planner.
 - CPSC 221 changed to CPSC 213.
+
+## Phase 4: Task 3
+- Based on UML class design, I don't think there is any refactoring I can do to improve my design because adding
+more classes, interfaces, and abstract classes are unnecessary for my application as it is pretty simple. 
+However, further development/improvement of my application (for example, adding more features) would require 
+refactoring. But one thing I could do is that making more classes like LoadButton to make GUI class simpler. 
+For example, I could make setUpTable method in GUI class as new class that extends JTable. 
+
 
 
 ###Citations: <br>
