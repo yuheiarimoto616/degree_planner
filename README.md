@@ -40,7 +40,7 @@ my saved degree planner from file.
 more classes, interfaces, and abstract classes are unnecessary for my application as it is pretty simple. 
 However, further development/improvement of my application (for example, adding more features) would require 
 refactoring. But one thing I could do is that making more classes like LoadButton to make GUI class simpler. 
-For example, I could make setUpTable method in GUI class as new class that extends JTable. 
+For example, I could extract setUpTable method in GUI class as new class that extends JTable. 
 
 
 
