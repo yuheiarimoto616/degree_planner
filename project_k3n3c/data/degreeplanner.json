@@ -1,0 +1,72 @@
+{"courses": [
+    {
+        "credits": 4,
+        "courseCode": 110,
+        "grade": 97,
+        "subjectCode": "CPSC",
+        "status": 0
+    },
+    {
+        "credits": 3,
+        "courseCode": 100,
+        "grade": 91,
+        "subjectCode": "DSCI",
+        "status": 0
+    },
+    {
+        "credits": 3,
+        "courseCode": 111,
+        "grade": 88,
+        "subjectCode": "BIOL",
+        "status": 0
+    },
+    {
+        "credits": 3,
+        "courseCode": 100,
+        "grade": 98,
+        "subjectCode": "PHYS",
+        "status": 0
+    },
+    {
+        "credits": 3,
+        "courseCode": 101,
+        "grade": 80,
+        "subjectCode": "ECON",
+        "status": 0
+    },
+    {
+        "credits": 4,
+        "courseCode": 121,
+        "grade": -1,
+        "subjectCode": "CPSC",
+        "status": 1
+    },
+    {
+        "credits": 4,
+        "courseCode": 210,
+        "grade": -1,
+        "subjectCode": "CPSC",
+        "status": 1
+    },
+    {
+        "credits": 3,
+        "courseCode": 170,
+        "grade": -1,
+        "subjectCode": "PHYS",
+        "status": 1
+    },
+    {
+        "credits": 3,
+        "courseCode": 113,
+        "grade": -1,
+        "subjectCode": "SCIE",
+        "status": 1
+    },
+    {
+        "credits": 4,
+        "courseCode": 221,
+        "grade": -1,
+        "subjectCode": "CPSC",
+        "status": 2
+    }
+]}
